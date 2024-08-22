@@ -1,20 +1,87 @@
+"use client";
 import {
   BaggageClaim,
-  BarChart,
   BarChart4,
   Cable,
-  ChartNoAxesColumnIncreasing,
   ChevronLeft,
+  CirclePlus,
   Files,
   Home,
-  HomeIcon,
   ShoppingBag,
+  ShoppingBasket,
   ShoppingCart,
 } from "lucide-react";
 import React from "react";
 import Link from "next/link";
 import SubscriptionCard from "./SubscriptionCard";
+import SidebarDropdownLink from "./SidebarDropdownLink";
+
 export default function Sidebar() {
+  const inventoryLinks = [
+    {
+      title: "Items",
+      href: "/backoffice/dashboard/inventory/items/new",
+    },
+    {
+      title: "Categories",
+      href: "/backoffice/dashboard/inventory/categories/new",
+    },
+    {
+      title: "Brands",
+      href: "/backoffice/dashboard/inventory/brands/new",
+    },
+    {
+      title: "Units",
+      href: "/backoffice/dashboard/inventory/units/new",
+    },
+    {
+      title: "Warehouse",
+      href: "/backoffice/dashboard/inventory/warehouse/new",
+    },
+    {
+      title: "Inventory Adjustments",
+      href: "#",
+    },
+  ];
+
+  const salesLinks = [
+    {
+      title: "Customers",
+      href: "#",
+    },
+    {
+      title: "Sales Orders",
+      href: "#",
+    },
+    {
+      title: "Packages",
+      href: "#",
+    },
+    {
+      title: "Shipments",
+      href: "#",
+    },
+    {
+      title: "Invoices",
+      href: "#",
+    },
+    {
+      title: "Sales Receipts",
+      href: "#",
+    },
+    {
+      title: "Payments Received",
+      href: "#",
+    },
+    {
+      title: "Sales Returns",
+      href: "#",
+    },
+    {
+      title: "Credit Notes",
+      href: "#",
+    },
+  ];
   return (
     <div className="w-60 min-h-screen bg-slate-800 text-slate-50 fixed ">
       {/* Top Part*/}
@@ -36,14 +103,25 @@ export default function Sidebar() {
             <Home className="w-4 h-4" />
             <span>Home</span>
           </Link>
-          <button className=" p-2 flex items-center space-x-2">
-            <BaggageClaim className="w-4 h-4" />
-            <span>Inventory</span>
-          </button>
-          <button className=" p-2 flex items-center space-x-2">
+
+          {/* //// SHADCN CODE */}
+          {/* FOR INVENTORY */}
+          <SidebarDropdownLink
+            title="Inventory"
+            items={inventoryLinks}
+            icon={BaggageClaim}
+          />
+          {/* FOR SALES */}
+          <SidebarDropdownLink
+            title="Sales"
+            items={salesLinks}
+            icon={ShoppingBasket}
+          />
+
+          {/* <button className=" p-2 flex items-center space-x-2">
             <ShoppingCart className="w-4 h-4" />
             <span>Sales</span>
-          </button>
+          </button> */}
           <button className=" p-2 flex items-center space-x-2">
             <ShoppingBag className="w-4 h-4" />
             <span>Purchases</span>
